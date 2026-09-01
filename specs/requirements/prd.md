@@ -26,10 +26,10 @@ A shared library catalog that any signed-in member can add books to — by looki
 ## Product Decisions
 
 - Sign-in is via SSO through Thunder, the platform identity provider (organization default).
-- The catalog is shared: every member sees the same list of books. Read status and rating are personal to each member — the same book can be "read, 5 stars" for one member and "unread" for another. *assumed*
-- Any member can add or remove books from the shared catalog; there is no separate admin/librarian role. *assumed*
+- The catalog is shared: every member sees the same list of books. Read status and rating are personal to each member — the same book can be "read, 5 stars" for one member and "unread" for another.
+- Any member can add or remove books from the shared catalog; there is no separate admin/librarian role.
 - New books are added via lookup against an external book database (by title or ISBN) rather than manual entry, per the user's decision. The specific provider is chosen at design time.
-- Rating scale is a 1–5 star rating. *assumed*
+- Rating scale is a 1–5 star rating.
 
 ## Out of Scope
 
