@@ -22,25 +22,25 @@ A shared library catalog that any signed-in member can add books to — by looki
 6. As a member, I want to see each book's average rating and how many members have read it, so that I can gauge the group's opinion at a glance.
 7. As a member, I want to filter or search the catalog by title, author, my read status, or my rating, so that I can quickly find a specific book or decide what to read next.
 8. As a member, I want to remove a book I added by mistake from the shared catalog, so that the catalog stays accurate.
+9. As a member, I want to manually enter a book's details when the title/ISBN lookup finds no match, so that I can still add it to the shared catalog.
 
 ## Product Decisions
 
 - Sign-in is via SSO through Thunder, the platform identity provider (organization default).
 - The catalog is shared: every member sees the same list of books. Read status and rating are personal to each member — the same book can be "read, 5 stars" for one member and "unread" for another.
 - Any member can add or remove books from the shared catalog; there is no separate admin/librarian role.
-- New books are added via lookup against an external book database (by title or ISBN) rather than manual entry, per the user's decision. The specific provider is chosen at design time.
+- New books are added primarily via lookup against an external book database (by title or ISBN) rather than typing every detail by hand, per the user's decision. The specific provider is chosen at design time. When the lookup finds no match, the member falls back to entering the book's details manually.
 - Rating scale is a 1–5 star rating.
 
 ## Out of Scope
 
 - Physical copy/inventory tracking (number of copies, loaning books out, due dates).
-- Manual entry of book details when a lookup finds no match.
 - Social features beyond aggregate rating (comments, reviews, discussion threads).
 - Reading progress tracking below whole-book granularity (e.g., page/chapter progress, reading lists/queues).
 
 ## Open Questions
 
-1. When a title/ISBN lookup finds no match, should the member be blocked from adding the book, or is manual fallback entry needed? Currently out of scope, but worth confirming.
+None currently.
 
 ## Further Notes
 
