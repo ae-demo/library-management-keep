@@ -7,16 +7,54 @@
   "appPath": "library-webapp",
   "entrypoint": "deployment/web-application",
   "exposure": "internet",
+  "stories": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "description": "The single-page app members use to sign in, browse the shared catalog, search and add books (via lookup or manual fallback), and mark books read/rate them for themselves. Talks only to library-api — it holds no book data and never calls the book-lookup provider directly.",
   "dependencies": [
-    { "kind": "component", "name": "library-api", "description": "Searches the book-lookup, browses/filters the catalog, adds/removes books, and updates the caller's own read status and rating." },
+    {
+      "kind": "component",
+      "name": "library-api",
+      "description": "Searches the book-lookup, browses/filters the catalog, adds/removes books, and updates the caller's own read status and rating.",
+      "wiring": {
+        "endpoint": {
+          "component": "library-management-keep-library-api",
+          "name": "http",
+          "visibility": "project",
+          "envBindings": {
+            "address": "LIBRARY_API_URL"
+          }
+        }
+      }
+    },
     {
       "kind": "platform-resource",
       "name": "user-auth",
+      "description": "Signs the member in via Thunder (OIDC + PKCE) and carries the resulting token to library-api.",
       "resourceType": "thunder-app",
-      "description": "Signs the member in via Thunder (OIDC + PKCE) and carries the resulting token to library-api."
+      "wiring": {
+        "ref": "library-managemen-122687ef",
+        "envBindings": {
+          "client_id": "USER_AUTH_CLIENT_ID",
+          "issuer": "USER_AUTH_ISSUER",
+          "jwks_url": "USER_AUTH_JWKS_URL",
+          "scopes": "USER_AUTH_SCOPES"
+        }
+      }
     }
   ],
-  "description": "The single-page app members use to sign in, browse the shared catalog, search and add books (via lookup or manual fallback), and mark books read/rate them for themselves. Talks only to library-api — it holds no book data and never calls the book-lookup provider directly.",
-  "stories": [1, 2, 3, 4, 5, 6, 7, 8, 9],
-  "skillsPinned": ["wireframes", "react-webapp", "astryx-design-system", "thunder-authentication"]
+  "skillsPinned": [
+    "wireframes",
+    "react-webapp",
+    "astryx-design-system",
+    "thunder-authentication"
+  ]
 }

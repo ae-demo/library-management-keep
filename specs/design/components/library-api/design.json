@@ -7,31 +7,81 @@
   "appPath": "library-api",
   "entrypoint": "deployment/service",
   "exposure": "intranet",
+  "stories": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "description": "Owns the shared book catalog and each member's personal read status and rating. Exposes REST endpoints to search the external book-lookup provider, add/remove books (via lookup match or manual entry), browse and filter the catalog, and upsert a member's own read/rating status. Aggregates per-book average rating and read count from member statuses. Does not render any UI and does not issue or validate tokens itself — the gateway validates the Thunder token and injects the caller's identity.",
   "dependencies": [
     {
       "kind": "platform-resource",
       "name": "library-db",
       "resourceType": "postgres-cnpg",
-      "parameters": { "instances": 1, "storage": "1Gi", "version": "16" }
+      "parameters": {
+        "instances": 1,
+        "storage": "1Gi",
+        "version": "16"
+      },
+      "wiring": {
+        "ref": "library-managemen-5024a039",
+        "envBindings": {
+          "dbname": "LIBRARY_DB_DBNAME",
+          "host": "LIBRARY_DB_HOST",
+          "password": "LIBRARY_DB_PASSWORD",
+          "port": "LIBRARY_DB_PORT",
+          "user": "LIBRARY_DB_USER"
+        }
+      }
     },
     {
       "kind": "platform-resource",
       "name": "user-auth",
+      "description": "Validates the caller's Thunder-issued token; the gateway injects the member's identity into X-User-Id.",
       "resourceType": "thunder-app",
-      "description": "Validates the caller's Thunder-issued token; the gateway injects the member's identity into X-User-Id."
+      "wiring": {
+        "ref": "library-managemen-122687ef",
+        "envBindings": {
+          "client_id": "USER_AUTH_CLIENT_ID",
+          "issuer": "USER_AUTH_ISSUER",
+          "jwks_url": "USER_AUTH_JWKS_URL",
+          "scopes": "USER_AUTH_SCOPES"
+        }
+      }
     },
     {
       "kind": "external",
       "name": "book-lookup",
+      "description": "Open Library (Internet Archive) — looks up book metadata (title, author, cover) by title or ISBN so a member can add a book without typing every field by hand. Free, no API key or signup required. No vendor-issued OpenAPI document exists, so a lean hand-authored contract covering /search.json, /isbn/{isbn}.json, and the covers image endpoint is checked in alongside this component.",
       "style": "rest-api",
       "specPath": "specs/design/components/library-api/dependencies/book-lookup.openapi.yaml",
-      "description": "Open Library (Internet Archive) — looks up book metadata (title, author, cover) by title or ISBN so a member can add a book without typing every field by hand. Free, no API key or signup required. No vendor-issued OpenAPI document exists, so a lean hand-authored contract covering /search.json, /isbn/{isbn}.json, and the covers image endpoint is checked in alongside this component.",
       "config": [
-        { "key": "OPENLIBRARY_BASE_URL", "defaultValue": "https://openlibrary.org", "description": "Base URL of the Open Library API" }
-      ]
+        {
+          "key": "OPENLIBRARY_BASE_URL",
+          "description": "Base URL of the Open Library API",
+          "defaultValue": "https://openlibrary.org"
+        }
+      ],
+      "wiring": {
+        "ref": "library-managemen-6b22fba1",
+        "envBindings": {
+          "OPENLIBRARY_BASE_URL": "OPENLIBRARY_BASE_URL"
+        }
+      }
     }
   ],
-  "description": "Owns the shared book catalog and each member's personal read status and rating. Exposes REST endpoints to search the external book-lookup provider, add/remove books (via lookup match or manual entry), browse and filter the catalog, and upsert a member's own read/rating status. Aggregates per-book average rating and read count from member statuses. Does not render any UI and does not issue or validate tokens itself — the gateway validates the Thunder token and injects the caller's identity.",
-  "stories": [2, 3, 4, 5, 6, 7, 8, 9],
-  "skillsPinned": ["openapi-conventions", "ballerina", "api-management", "thunder-authentication"]
+  "exposesAPI": {
+    "auth": "end-user-required"
+  },
+  "skillsPinned": [
+    "openapi-conventions",
+    "ballerina",
+    "api-management",
+    "thunder-authentication"
+  ]
 }
