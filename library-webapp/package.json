@@ -1,0 +1,40 @@
+{
+  "name": "library-webapp",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "astryx": {
+    "theme": "@astryxdesign/theme-neutral"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "lint": "oxlint",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@astryxdesign/build": "^0.5.2",
+    "@astryxdesign/core": "^0.5.2",
+    "@astryxdesign/theme-neutral": "^0.5.2",
+    "@stylexjs/stylex": "^0.19.0",
+    "oidc-client-ts": "^3.5.0",
+    "openapi-fetch": "^0.17.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "react-router-dom": "^7.18.3"
+  },
+  "devDependencies": {
+    "@astryxdesign/cli": "^0.5.2",
+    "@babel/core": "^7.29.7",
+    "@stylexjs/babel-plugin": "^0.19.0",
+    "@stylexjs/unplugin": "^0.19.0",
+    "@types/node": "^24.13.3",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
+    "@vitejs/plugin-react": "^6.1.0",
+    "openapi-typescript": "^7.13.0",
+    "oxlint": "^1.79.0",
+    "typescript": "^5.9.3",
+    "vite": "^8.2.2"
+  }
+}
