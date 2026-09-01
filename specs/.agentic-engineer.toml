@@ -1,0 +1,4 @@
+apiVersion = "agentic-engineer/v1"
+name = "library-management-keep"
+createdAt = "2026-09-01T12:39:34Z"
+idea = "Create a library management system where I can keep a catelog of books, mark them as whether read or not, and rate them."
