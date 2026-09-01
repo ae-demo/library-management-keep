@@ -24,7 +24,8 @@
       "kind": "external",
       "name": "book-lookup",
       "style": "rest-api",
-      "description": "Open Library (Internet Archive) — looks up book metadata (title, author, cover) by title or ISBN so a member can add a book without typing every field by hand. Free, no API key or signup required. No published OpenAPI document was found; the coding agent should research the live endpoints (search.json, /isbn/{isbn}.json, the covers API) directly against the base URL below.",
+      "specPath": "specs/design/components/library-api/dependencies/book-lookup.openapi.yaml",
+      "description": "Open Library (Internet Archive) — looks up book metadata (title, author, cover) by title or ISBN so a member can add a book without typing every field by hand. Free, no API key or signup required. No vendor-issued OpenAPI document exists, so a lean hand-authored contract covering /search.json, /isbn/{isbn}.json, and the covers image endpoint is checked in alongside this component.",
       "config": [
         { "key": "OPENLIBRARY_BASE_URL", "defaultValue": "https://openlibrary.org", "description": "Base URL of the Open Library API" }
       ]
