@@ -1,0 +1,85 @@
+{
+  "requirements": [
+    {
+      "id": "REQ-001",
+      "statement": "A member can sign in securely so their catalog activity is tied to their account",
+      "stories": [1],
+      "criteria": [
+        { "id": "AC-001-a", "must": "An unauthenticated visitor is directed to sign in before reaching the catalog", "method": "e2e" },
+        { "id": "AC-001-b", "must": "After signing in, the member reaches the catalog as themself", "method": "e2e" }
+      ]
+    },
+    {
+      "id": "REQ-002",
+      "statement": "A member can search for a book by title or ISBN and add it to the shared catalog without typing details by hand",
+      "stories": [2],
+      "criteria": [
+        { "id": "AC-002-a", "must": "Searching by title returns candidate matches from the book database", "method": "e2e" },
+        { "id": "AC-002-b", "must": "Searching by ISBN returns candidate matches from the book database", "method": "e2e" },
+        { "id": "AC-002-c", "must": "Selecting a candidate match adds a book to the shared catalog with its looked-up details populated", "method": "e2e" }
+      ]
+    },
+    {
+      "id": "REQ-003",
+      "statement": "A member can browse the full shared catalog",
+      "stories": [3],
+      "criteria": [
+        { "id": "AC-003-a", "must": "The catalog view lists every book any member has added", "method": "e2e" }
+      ]
+    },
+    {
+      "id": "REQ-004",
+      "statement": "A member can mark a book as read or unread for themself, independent of other members",
+      "stories": [4],
+      "criteria": [
+        { "id": "AC-004-a", "must": "Marking a book read updates that member's own read status on the book", "method": "e2e" },
+        { "id": "AC-004-b", "must": "One member's read status on a book does not change another member's read status on the same book", "method": "e2e" }
+      ]
+    },
+    {
+      "id": "REQ-005",
+      "statement": "A member can rate a book they've read on a 1-5 star scale",
+      "stories": [5],
+      "criteria": [
+        { "id": "AC-005-a", "must": "A member can set a rating between 1 and 5 stars on a book", "method": "e2e" },
+        { "id": "AC-005-b", "must": "A rating outside the 1-5 range is rejected", "method": "e2e" }
+      ]
+    },
+    {
+      "id": "REQ-006",
+      "statement": "A member can see each book's average rating and how many members have read it",
+      "stories": [6],
+      "criteria": [
+        { "id": "AC-006-a", "must": "A book's displayed average rating reflects all members' ratings for that book", "method": "e2e" },
+        { "id": "AC-006-b", "must": "A book's displayed read count reflects the number of members who marked it read", "method": "e2e" }
+      ]
+    },
+    {
+      "id": "REQ-007",
+      "statement": "A member can filter or search the catalog by title, author, their own read status, or their own rating",
+      "stories": [7],
+      "criteria": [
+        { "id": "AC-007-a", "must": "Filtering by title or author narrows the catalog to matching books", "method": "e2e" },
+        { "id": "AC-007-b", "must": "Filtering by the caller's own read status narrows the catalog to books matching that status", "method": "e2e" },
+        { "id": "AC-007-c", "must": "Filtering by the caller's own rating narrows the catalog to books matching that rating", "method": "e2e" }
+      ]
+    },
+    {
+      "id": "REQ-008",
+      "statement": "A member can remove a book they added by mistake from the shared catalog",
+      "stories": [8],
+      "criteria": [
+        { "id": "AC-008-a", "must": "Removing a book takes it out of the shared catalog for every member", "method": "e2e" }
+      ]
+    },
+    {
+      "id": "REQ-009",
+      "statement": "A member can manually enter a book's details when the title/ISBN lookup finds no match",
+      "stories": [9],
+      "criteria": [
+        { "id": "AC-009-a", "must": "When a lookup search returns no matches, the member is offered a manual-entry path", "method": "e2e" },
+        { "id": "AC-009-b", "must": "Submitting manually entered title and author adds the book to the shared catalog", "method": "e2e" }
+      ]
+    }
+  ]
+}

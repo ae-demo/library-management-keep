@@ -1,0 +1,17 @@
+title Shared Library Catalog
+
+component library-webapp as "Library Webapp" web-application
+component library-api as "Library API" service
+component library-db as "Library Database" database
+
+east user-auth as "Thunder Auth" identity-server
+south book-lookup as "Book Lookup Provider" service
+
+north -> library-webapp
+
+library-webapp -> library-api
+library-webapp -> user-auth
+
+library-api -> library-db
+library-api -> user-auth
+library-api -> book-lookup

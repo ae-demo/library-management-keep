@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "coldStartRole": "Library Member",
+  "publicComponents": [],
+  "roles": [
+    {
+      "name": "Library Member",
+      "description": "A signed-in user of the shared library catalog. Adds and removes books, browses the catalog, and tracks their own read status and rating on every book.",
+      "stories": [1, 2, 3, 4, 5, 6, 7, 8, 9],
+      "grantedBy": "first sign-in",
+      "permissions": [
+        { "component": "library-api", "actions": ["search book lookup", "create book", "delete book", "list books", "read book", "upsert own read status and rating"] },
+        { "component": "library-webapp", "screens": ["Catalog", "Book Detail", "Add Book"] }
+      ]
+    }
+  ],
+  "testUsers": [
+    { "username": "test-library-member", "role": "Library Member" }
+  ],
+  "thunder": {
+    "name": "Shared Library Catalog",
+    "type": "browser",
+    "scopes": "openid profile email group ou"
+  }
+}

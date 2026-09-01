@@ -1,0 +1,36 @@
+{
+  "name": "library-api",
+  "type": "service",
+  "version": "0.1.0",
+  "language": "Ballerina",
+  "buildpack": "docker",
+  "appPath": "library-api",
+  "entrypoint": "deployment/service",
+  "exposure": "intranet",
+  "dependencies": [
+    {
+      "kind": "platform-resource",
+      "name": "library-db",
+      "resourceType": "postgres-cnpg",
+      "parameters": { "instances": 1, "storage": "1Gi", "version": "16" }
+    },
+    {
+      "kind": "platform-resource",
+      "name": "user-auth",
+      "resourceType": "thunder-app",
+      "description": "Validates the caller's Thunder-issued token; the gateway injects the member's identity into X-User-Id."
+    },
+    {
+      "kind": "external",
+      "name": "book-lookup",
+      "description": "Looks up book metadata (title, author, cover) by title or ISBN so a member can add a book without typing every field by hand. No requirement names a vendor, so two free, no-signup book databases are offered as candidates.",
+      "candidates": [
+        { "name": "openlibrary", "style": "rest-api", "package": "openlibrary", "description": "Open Library (Internet Archive) — free, no API key, search + ISBN lookup + cover images." },
+        { "name": "google-books", "style": "rest-api", "package": "google-books", "description": "Google Books API — free tier, optional API key, search + ISBN lookup + cover images." }
+      ]
+    }
+  ],
+  "description": "Owns the shared book catalog and each member's personal read status and rating. Exposes REST endpoints to search the external book-lookup provider, add/remove books (via lookup match or manual entry), browse and filter the catalog, and upsert a member's own read/rating status. Aggregates per-book average rating and read count from member statuses. Does not render any UI and does not issue or validate tokens itself — the gateway validates the Thunder token and injects the caller's identity.",
+  "stories": [2, 3, 4, 5, 6, 7, 8, 9],
+  "skillsPinned": ["openapi-conventions", "ballerina", "api-management", "thunder-authentication"]
+}
