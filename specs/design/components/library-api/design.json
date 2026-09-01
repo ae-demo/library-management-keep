@@ -23,10 +23,10 @@
     {
       "kind": "external",
       "name": "book-lookup",
-      "description": "Looks up book metadata (title, author, cover) by title or ISBN so a member can add a book without typing every field by hand. No requirement names a vendor, so two free, no-signup book databases are offered as candidates.",
-      "candidates": [
-        { "name": "openlibrary", "style": "rest-api", "package": "openlibrary", "description": "Open Library (Internet Archive) — free, no API key, search + ISBN lookup + cover images." },
-        { "name": "google-books", "style": "rest-api", "package": "google-books", "description": "Google Books API — free tier, optional API key, search + ISBN lookup + cover images." }
+      "style": "rest-api",
+      "description": "Open Library (Internet Archive) — looks up book metadata (title, author, cover) by title or ISBN so a member can add a book without typing every field by hand. Free, no API key or signup required. No published OpenAPI document was found; the coding agent should research the live endpoints (search.json, /isbn/{isbn}.json, the covers API) directly against the base URL below.",
+      "config": [
+        { "key": "OPENLIBRARY_BASE_URL", "defaultValue": "https://openlibrary.org", "description": "Base URL of the Open Library API" }
       ]
     }
   ],
