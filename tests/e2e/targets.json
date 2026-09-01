@@ -1,0 +1,7 @@
+{
+  "targets": {
+    "library-api": "https://development-default.apps.94.72.97.95.sslip.io:443/library-management-keep-library-api-http",
+    "library-webapp": "https://http-library-manag-development-default-2f565a66.apps.94.72.97.95.sslip.io:443/"
+  },
+  "primary": "library-webapp"
+}
