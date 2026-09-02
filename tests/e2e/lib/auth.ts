@@ -3,14 +3,14 @@ import { Page, expect, test } from "@playwright/test";
 // Thunder exposes no ROPC/password grant, so every authenticated spec drives
 // the real browser login (see tests/validation/test-plan.md). The webapp's
 // silent-auth check (prompt=none) before landing on the sign-in page has been
-// observed taking 12-16s, occasionally more on a cold connection — widen this
+// observed taking 12-16s typically, with an outlier over 25s — widen this
 // helper's budget so that observed latency doesn't fail the login step itself.
 export async function login(page: Page): Promise<void> {
-  test.setTimeout(45000);
+  test.setTimeout(60000);
   await page.goto("/");
   await page
     .getByRole("textbox", { name: "Username" })
-    .waitFor({ state: "visible", timeout: 25000 });
+    .waitFor({ state: "visible", timeout: 40000 });
   await page
     .getByRole("textbox", { name: "Username" })
     .fill(process.env.AEP_E2E_USERNAME!);
