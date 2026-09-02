@@ -2,7 +2,11 @@ import ballerina/http;
 import ballerina/url;
 
 // book-lookup (external, Open Library) — see specs/design/components/library-api/dependencies/book-lookup.openapi.yaml.
-final http:Client openLibraryClient = check new (resolvedOpenLibraryBaseUrl());
+// Open Library's /isbn/{isbn}.json redirects (302) to the canonical /books/{id}.json
+// edition record, so redirects must be followed or the lookup fails to bind.
+final http:Client openLibraryClient = check new (resolvedOpenLibraryBaseUrl(), {
+    followRedirects: {enabled: true, maxCount: 5}
+});
 
 type OpenLibrarySearchDoc record {
     string title?;
