@@ -28,6 +28,18 @@ this is not scored against any AC, but it means every spec below reaches
 non-root routes only by **clicking through the UI**, never
 `page.goto()`/`page.reload()` to a nested path.
 
+**Re-validation (2026-09-02) finding — variable/occasionally slow sign-in
+latency:** the webapp's pre-signin silent-auth check (prompt=none) normally
+resolves in 12-16s, but across repeated full-suite runs this session it
+intermittently spiked much higher — once exceeding 25s (AC-001-a/-b, healed
+by widening `lib/auth.ts#login()`'s budget) and, in one full run, twice more
+exceeding 40s on unrelated specs (AC-005-b, AC-006-a) that re-passed on the
+very next run without any code change. This reads as environment/auth-service
+latency jitter under repeated login load, not a defect in any one spec — not
+scored against any AC (none of the 18 criteria concerns login performance),
+but worth surfacing since a login that occasionally hangs for 40s+ would be
+noticeable to a real user.
+
 ## AC-001-a — An unauthenticated visitor is directed to sign in before reaching the catalog
 
 - Target: library-webapp (primary)
