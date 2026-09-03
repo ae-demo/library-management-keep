@@ -1,8 +1,8 @@
 # Validation report
 
 - **Issue:** #7
-- **Commit:** 4bd217be8235dac62cc7ccfba512ec0323d1c9fc
-- **Generated:** 2026-09-02T15:04:52.174Z
+- **Commit:** 39af726af8c8c2cd2abb148c2854b762e84c72d0
+- **Generated:** 2026-09-03T15:16:51.887Z
 - **Playwright:** 1.61.1
 
 ## Summary
@@ -61,7 +61,7 @@ Call log:
 
 | Criterion | Classification | Change | Commit |
 |---|---|---|---|
-| AC-001-a | timing | expect(getByRole('heading', {name: 'Sign In'})).toBeVisible({timeout: 15000}) -> {timeout: 25000}; the pre-signin silent-auth check (prompt=none) was re-observed at 12-16s live, occasionally exceeding the prior 15s budget | `879b7993` |
-| AC-001-b | timing | lib/auth.ts login(): added test.setTimeout(45000) and an explicit waitFor({timeout: 25000}) on the Username textbox before filling, to absorb the same 12-16s+ silent-auth/redirect latency observed for AC-001-a, which was intermittently exceeding the default 30s test timeout | `879b7993` |
-| AC-001-b | timing | lib/auth.ts login(): further widened test.setTimeout(45000->60000) and the Username waitFor timeout (25000->40000) after an outlier auth latency (>25s) was observed transiently affecting other regression specs during this run | `9ed10316` |
+| AC-001-a | timing | widen sign-in heading timeout 15000ms -> 25000ms for observed 12-16s (occasionally more) silent-auth latency | `879b7993` |
+| AC-001-b | timing | lib/auth.ts login helper: raise test timeout to 60000ms, add explicit wait for the username field (40000ms) before filling, and widen the post-login Shared Catalog assertion to 15000ms, for the same silent-auth latency | `879b7993` |
+| AC-001-b | timing | lib/auth.ts login helper: widen timeout budget further after observing an outlier auth latency across other specs mid-run | `9ed10316` |
 
