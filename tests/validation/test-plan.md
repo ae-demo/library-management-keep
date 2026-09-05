@@ -28,6 +28,34 @@ this is not scored against any AC, but it means every spec below reaches
 non-root routes only by **clicking through the UI**, never
 `page.goto()`/`page.reload()` to a nested path.
 
+**Re-validation (2026-09-02) finding — variable/occasionally slow sign-in
+latency:** the webapp's pre-signin silent-auth check (prompt=none) normally
+resolves in 12-16s, but across repeated full-suite runs this session it
+intermittently spiked much higher — once exceeding 25s (AC-001-a/-b, healed
+by widening `lib/auth.ts#login()`'s budget) and, in one full run, twice more
+exceeding 40s on unrelated specs (AC-005-b, AC-006-a) that re-passed on the
+very next run without any code change. This reads as environment/auth-service
+latency jitter under repeated login load, not a defect in any one spec — not
+scored against any AC (none of the 18 criteria concerns login performance),
+but worth surfacing since a login that occasionally hangs for 40s+ would be
+noticeable to a real user.
+
+**Re-validation (2026-09-05) finding — same jitter, different symptom:** in
+this cycle's first full run, AC-001-a (a spec already healed for the slow-path
+above) timed out waiting for the "Sign In" heading at the widened 25s budget,
+then passed cleanly on an isolated re-run seconds later. In the immediately
+following authoritative run, AC-005-b instead hit Thunder's own
+`/gate/error?errorCode=invalid_request&errorMessage=Invalid+redirect+URI` page
+mid-login (`lib/auth.ts#login()`'s 40s wait for the Username field), and again
+passed cleanly on an isolated re-run with no code change. Neither spec's
+locators or waits were touched — both re-drives confirmed the app/IdP works
+correctly once the transient condition clears — so this is triaged as the same
+auth-service jitter already on file, now also surfacing as an occasional
+IdP-side redirect-URI rejection rather than only added latency. Still not
+scored against any AC; not healed further per the heal budget (already at a
+25-40s wait, and raising it again would mask rather than document the
+condition).
+
 ## AC-001-a — An unauthenticated visitor is directed to sign in before reaching the catalog
 
 - Target: library-webapp (primary)

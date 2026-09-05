@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "issue": 7,
-  "commit": "142fea3f6b11d261d2b9d6413da90fdfcdde22e8",
-  "generatedAt": "2026-09-01T14:17:47.307Z",
+  "commit": "afb34a7b15c9a09b856f50999ba655a950f98e14",
+  "generatedAt": "2026-09-05T15:53:07.705Z",
   "playwrightVersion": "1.61.1",
   "totals": {
     "e2e": {
@@ -25,7 +25,7 @@
       "healed": true,
       "healAttempts": 1,
       "flaky": false,
-      "durationMs": 12350,
+      "durationMs": 12278,
       "failure": null
     },
     {
@@ -35,10 +35,10 @@
       "method": "e2e",
       "status": "pass",
       "spec": "tests/e2e/specs/AC-001-b.spec.ts",
-      "healed": false,
-      "healAttempts": 0,
+      "healed": true,
+      "healAttempts": 2,
       "flaky": false,
-      "durationMs": 13990,
+      "durationMs": 13999,
       "failure": null
     },
     {
@@ -48,10 +48,10 @@
       "method": "e2e",
       "status": "pass",
       "spec": "tests/e2e/specs/AC-002-a.spec.ts",
-      "healed": true,
-      "healAttempts": 1,
+      "healed": false,
+      "healAttempts": 0,
       "flaky": false,
-      "durationMs": 16992,
+      "durationMs": 16662,
       "failure": null
     },
     {
@@ -64,7 +64,7 @@
       "healed": false,
       "healAttempts": 0,
       "flaky": false,
-      "durationMs": 25704,
+      "durationMs": 24562,
       "failure": {
         "message": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('list', { name: 'Matches' })\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 10000ms\n  - waiting for getByRole('list', { name: 'Matches' })\n",
         "location": "AC-002-b.spec.ts:5"
@@ -77,10 +77,10 @@
       "method": "e2e",
       "status": "pass",
       "spec": "tests/e2e/specs/AC-002-c.spec.ts",
-      "healed": true,
-      "healAttempts": 1,
+      "healed": false,
+      "healAttempts": 0,
       "flaky": false,
-      "durationMs": 17481,
+      "durationMs": 21105,
       "failure": null
     },
     {
@@ -93,7 +93,7 @@
       "healed": false,
       "healAttempts": 0,
       "flaky": false,
-      "durationMs": 16171,
+      "durationMs": 24520,
       "failure": null
     },
     {
@@ -106,7 +106,7 @@
       "healed": false,
       "healAttempts": 0,
       "flaky": false,
-      "durationMs": 19035,
+      "durationMs": 21694,
       "failure": null
     },
     {
@@ -132,7 +132,7 @@
       "healed": false,
       "healAttempts": 0,
       "flaky": false,
-      "durationMs": 18565,
+      "durationMs": 24131,
       "failure": null
     },
     {
@@ -145,7 +145,7 @@
       "healed": false,
       "healAttempts": 0,
       "flaky": false,
-      "durationMs": 16258,
+      "durationMs": 19945,
       "failure": null
     },
     {
@@ -155,10 +155,10 @@
       "method": "e2e",
       "status": "pass",
       "spec": "tests/e2e/specs/AC-006-a.spec.ts",
-      "healed": true,
-      "healAttempts": 1,
+      "healed": false,
+      "healAttempts": 0,
       "flaky": false,
-      "durationMs": 20075,
+      "durationMs": 25228,
       "failure": null
     },
     {
@@ -168,10 +168,10 @@
       "method": "e2e",
       "status": "pass",
       "spec": "tests/e2e/specs/AC-006-b.spec.ts",
-      "healed": true,
-      "healAttempts": 1,
+      "healed": false,
+      "healAttempts": 0,
       "flaky": false,
-      "durationMs": 18788,
+      "durationMs": 21911,
       "failure": null
     },
     {
@@ -184,7 +184,7 @@
       "healed": false,
       "healAttempts": 0,
       "flaky": false,
-      "durationMs": 16279,
+      "durationMs": 19183,
       "failure": null
     },
     {
@@ -197,7 +197,7 @@
       "healed": false,
       "healAttempts": 0,
       "flaky": false,
-      "durationMs": 18582,
+      "durationMs": 23781,
       "failure": null
     },
     {
@@ -210,7 +210,7 @@
       "healed": false,
       "healAttempts": 0,
       "flaky": false,
-      "durationMs": 17588,
+      "durationMs": 22376,
       "failure": null
     },
     {
@@ -223,7 +223,7 @@
       "healed": false,
       "healAttempts": 0,
       "flaky": false,
-      "durationMs": 16110,
+      "durationMs": 17841,
       "failure": null
     },
     {
@@ -233,10 +233,10 @@
       "method": "e2e",
       "status": "pass",
       "spec": "tests/e2e/specs/AC-009-a.spec.ts",
-      "healed": true,
-      "healAttempts": 1,
+      "healed": false,
+      "healAttempts": 0,
       "flaky": false,
-      "durationMs": 18128,
+      "durationMs": 18320,
       "failure": null
     },
     {
@@ -249,7 +249,7 @@
       "healed": false,
       "healAttempts": 0,
       "flaky": false,
-      "durationMs": 18776,
+      "durationMs": 19471,
       "failure": null
     }
   ]
