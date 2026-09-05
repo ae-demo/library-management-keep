@@ -1,8 +1,8 @@
 # Validation report
 
 - **Issue:** #7
-- **Commit:** f83d043b493914ad38494d9a1d763dd47d6fb490
-- **Generated:** 2026-09-04T15:26:13.759Z
+- **Commit:** afb34a7b15c9a09b856f50999ba655a950f98e14
+- **Generated:** 2026-09-05T15:53:07.705Z
 - **Playwright:** 1.61.1
 
 ## Summary
@@ -61,7 +61,7 @@ Call log:
 
 | Criterion | Classification | Change | Commit |
 |---|---|---|---|
-| AC-001-a | timing | widen sign-in heading timeout 15000ms -> 25000ms for observed 12-16s (occasionally more) silent-auth latency | `879b7993` |
-| AC-001-b | timing | lib/auth.ts login helper: raise test timeout to 60000ms, add explicit wait for the username field (40000ms) before filling, and widen the post-login Shared Catalog assertion to 15000ms, for the same silent-auth latency | `879b7993` |
-| AC-001-b | timing | lib/auth.ts login helper: widen timeout budget further after observing an outlier auth latency across other specs mid-run | `9ed10316` |
+| AC-001-a | timing | widen Sign In heading timeout 15000ms -> 25000ms for observed 12-16s silent-auth latency (re-declared: pre-existing heal from a prior cycle, gitignored log not carried across checkouts) | `879b7993` |
+| AC-001-b | timing | widen shared login timeout budget in lib/auth.ts for observed 12-16s silent-auth latency (re-declared: pre-existing heal from a prior cycle, gitignored log not carried across checkouts) | `879b7993` |
+| AC-001-b | timing | widen shared login timeout budget in lib/auth.ts further after observing outlier auth latency across other specs (re-declared: pre-existing heal from a prior cycle, gitignored log not carried across checkouts) | `9ed10316` |
 

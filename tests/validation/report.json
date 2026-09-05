@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "issue": 7,
-  "commit": "f83d043b493914ad38494d9a1d763dd47d6fb490",
-  "generatedAt": "2026-09-04T15:26:13.759Z",
+  "commit": "afb34a7b15c9a09b856f50999ba655a950f98e14",
+  "generatedAt": "2026-09-05T15:53:07.705Z",
   "playwrightVersion": "1.61.1",
   "totals": {
     "e2e": {
@@ -25,7 +25,7 @@
       "healed": true,
       "healAttempts": 1,
       "flaky": false,
-      "durationMs": 13257,
+      "durationMs": 12278,
       "failure": null
     },
     {
@@ -38,7 +38,7 @@
       "healed": true,
       "healAttempts": 2,
       "flaky": false,
-      "durationMs": 14582,
+      "durationMs": 13999,
       "failure": null
     },
     {
@@ -51,7 +51,7 @@
       "healed": false,
       "healAttempts": 0,
       "flaky": false,
-      "durationMs": 17761,
+      "durationMs": 16662,
       "failure": null
     },
     {
@@ -64,7 +64,7 @@
       "healed": false,
       "healAttempts": 0,
       "flaky": false,
-      "durationMs": 24890,
+      "durationMs": 24562,
       "failure": {
         "message": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('list', { name: 'Matches' })\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" with timeout 10000ms\n  - waiting for getByRole('list', { name: 'Matches' })\n",
         "location": "AC-002-b.spec.ts:5"
@@ -80,7 +80,7 @@
       "healed": false,
       "healAttempts": 0,
       "flaky": false,
-      "durationMs": 22045,
+      "durationMs": 21105,
       "failure": null
     },
     {
@@ -93,7 +93,7 @@
       "healed": false,
       "healAttempts": 0,
       "flaky": false,
-      "durationMs": 20076,
+      "durationMs": 24520,
       "failure": null
     },
     {
@@ -106,7 +106,7 @@
       "healed": false,
       "healAttempts": 0,
       "flaky": false,
-      "durationMs": 26969,
+      "durationMs": 21694,
       "failure": null
     },
     {
@@ -132,7 +132,7 @@
       "healed": false,
       "healAttempts": 0,
       "flaky": false,
-      "durationMs": 24481,
+      "durationMs": 24131,
       "failure": null
     },
     {
@@ -145,7 +145,7 @@
       "healed": false,
       "healAttempts": 0,
       "flaky": false,
-      "durationMs": 18738,
+      "durationMs": 19945,
       "failure": null
     },
     {
@@ -158,7 +158,7 @@
       "healed": false,
       "healAttempts": 0,
       "flaky": false,
-      "durationMs": 32803,
+      "durationMs": 25228,
       "failure": null
     },
     {
@@ -171,7 +171,7 @@
       "healed": false,
       "healAttempts": 0,
       "flaky": false,
-      "durationMs": 26237,
+      "durationMs": 21911,
       "failure": null
     },
     {
@@ -184,7 +184,7 @@
       "healed": false,
       "healAttempts": 0,
       "flaky": false,
-      "durationMs": 21359,
+      "durationMs": 19183,
       "failure": null
     },
     {
@@ -197,7 +197,7 @@
       "healed": false,
       "healAttempts": 0,
       "flaky": false,
-      "durationMs": 23977,
+      "durationMs": 23781,
       "failure": null
     },
     {
@@ -210,7 +210,7 @@
       "healed": false,
       "healAttempts": 0,
       "flaky": false,
-      "durationMs": 19670,
+      "durationMs": 22376,
       "failure": null
     },
     {
@@ -223,7 +223,7 @@
       "healed": false,
       "healAttempts": 0,
       "flaky": false,
-      "durationMs": 19744,
+      "durationMs": 17841,
       "failure": null
     },
     {
@@ -236,7 +236,7 @@
       "healed": false,
       "healAttempts": 0,
       "flaky": false,
-      "durationMs": 17139,
+      "durationMs": 18320,
       "failure": null
     },
     {
@@ -249,7 +249,7 @@
       "healed": false,
       "healAttempts": 0,
       "flaky": false,
-      "durationMs": 17599,
+      "durationMs": 19471,
       "failure": null
     }
   ]
